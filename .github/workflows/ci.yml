@@ -1,0 +1,19 @@
+# the name of the workflow
+name : Testing
+#on any event this workflow should do something
+on : push
+
+
+#what tasks should happen anytime i try to push
+jobs:
+    #NAME OF THE JOB(ANYTHING YOU LIKE)
+    test_project:
+        #selecting the virtual machine
+        #every os has some virtual machine here we are using git hub virtual machine called ubuntu
+        runs-on : ubutnu-latest
+        #what steps (actions) should happen
+        - uses : actions/chechout@v2
+        - name : Run django unit tests
+        run:
+            "pip install --user django"
+            "python3 manage.py test"
